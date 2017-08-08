@@ -1,0 +1,205 @@
+/* styles */
+/* called by your view template */
+
+/* You might want to try something fancier: */
+/* less: http://lesscss.org/ */
+
+* {
+  box-sizing: border-box;
+  margin:0;
+  padding:0;
+}
+
+body {
+  font-family: 'Zilla Slab', serif;
+  background: #F9E5FF;
+  color:#8800B2;
+  margin: 2em;
+}
+.content {
+  width: 520px;
+  margin: 0 auto;
+  background: #F9E5FF;
+  
+  z-index:5;
+}
+
+h1 {
+  font-size: 1.2em;
+  font-weight: 400;
+  letter-spacing: 0.1em;
+  
+  z-index:5;
+}
+
+.map {
+  width: 500px;
+  height: 500px;
+  margin: 2em 0;
+  
+  position:relative;
+  z-index: 5;
+  
+  background-color:#fff;
+}
+#viirs, #base {
+  position:absolute;
+  top:0;
+  left:0;
+}
+#viirs {
+  z-index: 15;
+}
+
+#base {
+  opacity: 0.5;
+}
+
+.actions {
+  display: flex;
+  justify-content: space-around;
+  
+  z-index:20;
+}
+.actions > div {
+  height: 5em;
+  margin-top: 1em;
+}
+.actions .left {
+  width: 65%;
+}
+
+.btn {
+  color: #ffffff;
+  font-size: 1em;
+  letter-spacing:0.1em;
+  background-color: #FAACA8;
+  background-image: linear-gradient(45deg, #FAACA8 0%, #d9afd9 65%);
+  padding: 10px 20px 10px 20px;
+  text-decoration: none;
+  border:0;
+  z-index: 25;
+  
+  border-radius: 20px;
+}
+.btn:hover {
+  background: #FAACA8;
+  text-decoration: none;
+  cursor:pointer;
+}
+
+.info {
+  width: 15em;
+  font-size: 0.8em;
+  line-height: 1.2em;
+  width: max-content;
+  z-index: 25;
+}
+
+.slider {
+  position:relative;
+  width: 90%;
+  height: 3em;
+  text-align:center;
+  float: left;
+}
+
+.slider-label {
+  position:absolute;
+  top: 0.5em;
+  left:0;
+  font-size: 0.8em;
+  font-weight: 500;
+  letter-spacing:0.1em;
+}
+
+.slider input[type="range"] {
+  position:absolute;
+  pointer-events: none; 
+  
+  font-size: 0.7em;
+  font-weight: 500;
+  letter-spacing: 0.1em;
+  
+  width: 100%;
+  
+  -webkit-appearance: none;
+  -webkit-tap-highlight-color: rgba(255, 255, 255, 0);
+  border: none;
+  border-radius: 14px;
+  background: #F1EFEF;
+  box-shadow: inset 0 1px 0 0 #cdc6c6, inset 0 -1px 0 0 #d9d4d4;
+  -webkit-box-shadow: inset 0 1px 0 0 #cdc6c6, inset 0 -1px 0 0 #d9d4d4;
+  overflow: hidden;
+  
+  left: 0;
+  top:2.5em;
+  outline: none;
+  height: 2em;
+  margin:0;
+  padding: 0;
+}
+
+.slider input[type="range"]::-webkit-slider-thumb {
+  pointer-events: all;
+  position: relative;
+  z-index: 1;
+  outline: 0;
+  -webkit-appearance: none;
+  width: 20px;
+  height: 20px;
+  border: none;
+  border-radius: 14px;
+  background-image: -webkit-gradient(linear, left top, left bottom, color-stop(0%, #dad8da), color-stop(100%, #413F41));
+  /* android <= 2.2 */
+  background-image: -webkit-linear-gradient(top, #dad8da 0, #413F41 100%);
+  /* older mobile safari and android > 2.2 */
+  background-image: linear-gradient(to bottom, #dad8da 0, #413F41 100%);
+}
+
+.slider input[type="range"]#start::-webkit-slider-thumb {
+  background-color: #0093E9;
+background-image: linear-gradient(160deg, #0093E9 0%, #80D0C7 100%);
+}
+.slider input[type="range"]#end::-webkit-slider-thumb {
+  background-color: #FAD961;
+background-image: linear-gradient(225deg, #FAD961 0%, #F76B1C 99%);
+
+}
+
+.slider input[type="range"]::moz-range-thumb {
+  pointer-events: all;
+  position: relative;
+  z-index: 10;
+  -moz-appearance: none;
+  width: 20px;
+  height: 20px;
+  border: none;
+  border-radius: 14px;
+  background-image: linear-gradient(to bottom, #dad8da 0, #413F41 100%);
+}
+.slider input[type="range"]::moz-range-track {
+  position: relative;
+  z-index: -1;
+  background-color: black;
+  border: 0;
+}
+.slider input[type="range"]:last-of-type::moz-range-track {
+  -moz-appearance: none;
+  background: none transparent;
+  border: 0;
+}
+
+/** svg styles **/
+.svgs {
+  position:absolute;
+  top:0;
+  left:0;
+  width: 100%;
+  height: 100vh;
+  
+  z-index:1;
+  
+  opacity: 0.5;
+}
+

@@ -1,0 +1,63 @@
+<!-- This is a static file -->
+<!-- served from your routes in server.js -->
+
+<!-- You might want to try something fancier: -->
+<!-- html/nunjucks docs: https://mozilla.github.io/nunjucks/ -->
+<!-- pug: https://pugjs.org/ -->
+<!-- haml: http://haml.info/ -->
+<!-- hbs(handlebars): http://handlebarsjs.com/ -->
+
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>VIIRS Active Hotspots: WMS Socket.io example</title>
+    <meta name="description" content="A cool thing made with Glitch">
+    <link id="favicon" rel="icon" href="https://glitch.com/edit/favicon-app.ico" type="image/x-icon">
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="/style.css">
+<!--     <link href="https://fonts.googleapis.com/css?family=Spectral" rel="stylesheet"> -->
+    <link href="https://fonts.googleapis.com/css?family=Zilla+Slab" rel="stylesheet">
+  </head>
+  <body>
+    
+    <div class="content">
+      <h1>
+        viirs active fire data for the western u.s.
+      </h1>
+      <div class="map">
+        <img id="viirs"/>
+        <img id="base" src="http://ows.mundialis.de/services/service?version=1.1.1&request=getmap&service=wms&format=image/png&srs=EPSG:4326&width=500&height=500&bbox=-125.388903,31.449299,-97.044171,49.053721&layers=TOPO-WMS&styles="/>
+        <div class="map-underlay">&nbsp;</div>
+      </div>
+      <div class="actions">
+        
+        <div class="left">
+          <div class="info">Waiting...</div>
+          <div class="slider">
+          <span class="slider-label"></span>
+          <input id="start" type="range" multiple min="0" step="1" max="10" data-values="1 9">
+          <input id="end" type="range" multiple min="0" step="1" max="10" data-values="1 9">
+        </div>
+        </div>
+        <div class="right">
+          <button id="addOwl" class="btn">━=͟͟͞͞(◍’◊’◍ ‧̣̥̇)━</button>
+        </div>
+      </div>
+    </div>
+    <div class="svgs"></div>
+    
+     
+    <script src="https://code.jquery.com/jquery-2.2.1.min.js"
+            integrity="sha256-gvQgAFzTH6trSrAWoH1iPo9Xc96QxSZ3feW6kem+O00="
+            crossorigin="anonymous"></script>
+    
+    <script src="socket.io/socket.io.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.18.1/moment.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/random-js/1.0.8/random.min.js"></script>
+    <script src="/client.js"></script>
+    
+
+  </body>
+</html>
