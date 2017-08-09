@@ -20,8 +20,6 @@ app.get("/svg", (request, response) => {
   var set = request.query.set || 'backgrounds';
   var type = request.query.type || undefined;
   
-  console.log(request.query);
-  
   var svg = drawing.draw(set, type);
   
   response.set('Content-type', "image/svg+xml");
@@ -41,7 +39,8 @@ server.listen(8080);
 
 // theoretically this starts in nov, 2000
 // but the satellite didn't go up until 2011
-const start_date = '2017-07-01';
+var start_date = '2017-07-01';
+var now = moment();
 
 const base_url = 'https://firms.modaps.eosdis.nasa.gov/wms-t/viirs/';
 
@@ -54,6 +53,8 @@ const width = 500;
 const height = 500;
 const type = 'image/png';
 
+
+
 io.sockets.on('connect', (socket, next) => {
   console.log('socket connection'); 
   
@@ -64,7 +65,7 @@ io.sockets.on('connect', (socket, next) => {
   var interval = setInterval(function() {
     var data = {};
     
-    let now = moment();
+    // let now = moment();
     if (now.isSameOrBefore(the_date)) {
       // restart the stream
       console.log('restarting');
@@ -109,9 +110,20 @@ io.sockets.on('connect', (socket, next) => {
     });
     
   }, 5000);
+  
+  socket.on('update', (data) => {
+    console.log('updating the range', data);
+    
+    // this has the potential to be hilariously bad
+    start_date = start_date === data.mindate ? data.mindate : start_date;
+    
+    now = now.format('YYYY-MM-DD') === data.maxdate ? moment(data.maxdate) : now;
+  });
 })
 
 /**
+some info on the base map wms request options
+
 functional url: 
 https://firms.modaps.eosdis.nasa.gov/wms-t/viirs/?SERVICE=WMS&VERSION=1.1.1&REQUEST=GetMap&layers=VIIRS_Hotspots&time=2017-08-01&format=image/png&crs=EPSG:4326&width=500&height=500&bbox=-125.388903,31.449299,-97.044171,49.053721
 
