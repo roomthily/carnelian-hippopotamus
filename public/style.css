@@ -88,7 +88,7 @@ path#border {
 .actions {
   display: flex;
   justify-content: space-around;
-  
+  width: 95%;
   z-index:20;
 }
 .actions > div {

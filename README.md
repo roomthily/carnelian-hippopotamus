@@ -5,6 +5,8 @@ Once upon a time, we wondered if we could provide an example system that would a
 
 So this is not 100% that thing, but it _is_ VIIRS active fire WMS-T piped through a socket (as a dataURI blob for client-side dependency reduction) and quickdraw owl sketches to SVG as background art.
 
-Which is not to say that wrapping WMS-T, for time, or the other model of WMS time publication (one service per time step) in a socket is not technically irrelevant? The update issues haven't gone away and the ease-of-use of a socket has a lot going for it. Just a thought.
+Which is not to say that wrapping WMS-T, for time, or the other model of WMS time publication (one service per time step) in a socket is technically irrelevant? The update issues haven't gone away and the ease-of-use of a socket has a lot going for it. Just a thought.
 
-Enjoy.
+Enjoy. 
+
+![](https://cdn.glitch.com/76db8fdc-4ad4-475d-9e93-6e2e7823f7e6%2Fviirs_wmst.gif?1502390408304)
