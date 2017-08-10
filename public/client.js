@@ -13,7 +13,7 @@ $(function() {
   // set the range for the slider & the date range
   //<input id="start" type="range" multiple min="0" step="1" max="10" data-values="1 9">
   var duration = max_date.diff(min_date, 'days');
-  $('.slider input')
+  $('.slider input[type="range"]')
     .attr('max', duration+1)
     .attr('data-values', '1 '+duration);
   
@@ -21,7 +21,6 @@ $(function() {
   $('.slider input[type="range"]').on('input', _slider);
   $('.slider input#start').val(0);
   $('.slider input#end').val(duration+1);
-  
   
   // add some background imagery
   for (var i=0; i<10; i++) {
