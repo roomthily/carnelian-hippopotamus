@@ -40,7 +40,7 @@ server.listen(8080);
 // theoretically this starts in nov, 2000
 // but the satellite didn't go up until 2011
 var start_date = '2017-07-01';
-var now = moment();
+var end_date = moment();
 
 const base_url = 'https://firms.modaps.eosdis.nasa.gov/wms-t/viirs/';
 
@@ -53,8 +53,6 @@ const width = 500;
 const height = 500;
 const type = 'image/png';
 
-
-
 io.sockets.on('connect', (socket, next) => {
   console.log('socket connection'); 
   
@@ -65,8 +63,7 @@ io.sockets.on('connect', (socket, next) => {
   var interval = setInterval(function() {
     var data = {};
     
-    // let now = moment();
-    if (now.isSameOrBefore(the_date)) {
+    if (end_date.isSameOrBefore(the_date)) {
       // restart the stream
       console.log('restarting');
       the_date = moment(start_date);
@@ -117,7 +114,7 @@ io.sockets.on('connect', (socket, next) => {
     // this has the potential to be hilariously bad
     start_date = start_date === data.mindate ? data.mindate : start_date;
     
-    now = now.format('YYYY-MM-DD') === data.maxdate ? moment(data.maxdate) : now;
+    end_date = end_date.format('YYYY-MM-DD') !== data.maxdate ? moment(data.maxdate) : end_date;
   });
 })
 
